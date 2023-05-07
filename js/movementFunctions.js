@@ -1,3 +1,4 @@
+
 function movementSpeed(token, type) {
 	//handles speeds for non vehicles
 	if (token.actor.type === "character" && type === 'land'){type = 'land-speed'}
@@ -22,7 +23,7 @@ function getMovementType(token){
   const tokenElevation = token?.document?.elevation; //Gives us a way to check if a token is flying
 	var movementType = 'land';
   //This logic gate handles flight, burrowing and swimming, if the automatic movment switching is on.
-  if (game.settings.get("pf2e-dragruler", "auto")) {
+  if (game.settings.get("pf2edragruler-metric", "auto")) {
   	if(tokenElevation > 0) {var movementType = 'fly'}; //if elevated fly
   	if (tokenElevation < 0){var movementType = 'burrow'}; //if below ground burrow.
 		if (game.modules.get("enhanced-terrain-layer")?.active){
@@ -32,7 +33,7 @@ function getMovementType(token){
 	};
 
 	//This logic gate handles flight and swimming, if the scene environment based movement switching is on.
-	if (game.settings.get("pf2e-dragruler", "scene") === true && game.modules.get("enhanced-terrain-layer")?.active) {
+	if (game.settings.get("pf2edragruler-metric", "scene") === true && game.modules.get("enhanced-terrain-layer")?.active) {
 		if(canvas.scene.getFlag('enhanced-terrain-layer', 'environment') === 'sky') {var movementType = 'fly'}; //checks if the scene is set to have a default environment of sky. If so, uses fly speed.
 		if(canvas.scene.getFlag('enhanced-terrain-layer', 'environment') === 'aquatic'){var movementType = 'swim'}; //checks if the scene is set to have a default environment of aquatic. If so, uses swim speed.
 	};
@@ -76,9 +77,19 @@ return numactions
 //This function handles tracking how far a token has moved, allowing for drag ruler to consider movements less than a full movement speed as complete.
 export function movementTracking (token){
   const movementType = getMovementType(token);
-	const baseSpeed = movementSpeed(token, movementType).speed; //gets the base speed for the token, based on current movement type.
+  let baseSpeed = movementSpeed(token, movementType).speed; //gets the base speed for the token, based on current movement type.
+
+
+
+var metricSpeed = baseSpeed / 3.2808;
+if (isNaN(metricSpeed)) {
+	metricSpeed = 0;
+}
+baseSpeed = Math.floor(metricSpeed);
+	
+
 	var usedActions = 0;
-if (game.combats.active && game.settings.get("pf2e-dragruler", "partialMovements") && game.settings.get("drag-ruler", "enableMovementHistory")){
+if (game.combats.active && game.settings.get("pf2edragruler-metric", "partialMovements") && game.settings.get("drag-ruler", "enableMovementHistory")){
   const combat = game.combats.active
   const combatant = combat.getCombatantByToken(token.id);
   var moveHistory = combatant?.flags?.dragRuler?.passedWaypoints
@@ -107,7 +118,7 @@ const P4 = moveHistory[3]?.dragRulerVisitedSpaces[moveHistory[3]?.dragRulerVisit
   		var A2 = baseSpeed*2;
   		var A3 = baseSpeed*3;
   		var A4 = baseSpeed*4;
-    }game.settings.register("pf2e-dragruler", "offTurnMovement", {
+    }game.settings.register("pf2edragruler-metric", "offTurnMovement", {
 			name: "Ignore Off Turn Movement",
 			hint: "Requires movement history to be enabled. Automatically resets movement history at the start of each actor's turn in combat, meaning any movement performed off turn as a reaction won't effect the movement history, on your turn.",
 			scope: "world",

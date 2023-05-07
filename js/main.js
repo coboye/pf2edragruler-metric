@@ -65,11 +65,11 @@ Hooks.once("dragRuler.ready", (SpeedProvider) => {
 	  };
 	  };
 // When dragruler is ready to go give it all the PF2 specific stuff
-	dragRuler.registerModule("pf2e-dragruler", PF2eSpeedProvider) //register the speed provider so its selectable from the drag ruler configuration.
+	dragRuler.registerModule("pf2edragruler-metric", PF2eSpeedProvider) //register the speed provider so its selectable from the drag ruler configuration.
 });
 
 Hooks.on('updateCombat', () => {
-	if(game.user.isGM && game.settings.get("drag-ruler", "enableMovementHistory") && game.settings.get("pf2e-dragruler", "offTurnMovement")){
+	if(game.user.isGM && game.settings.get("drag-ruler", "enableMovementHistory") && game.settings.get("pf2edragruler-metric", "offTurnMovement")){
 		const combat = game.combats.active; //set the current combat
 		if(combat?.turns.length > 0){
 		 const previousCombatant = combat.turns[(combat.turn - 1) < 0 ? (combat.turns.length - 1) : (combat.turn - 1)];
@@ -138,5 +138,5 @@ Hooks.once("enhancedTerrainLayer.ready", (RuleProvider) => {
       return cost;
     }
   }
-  enhancedTerrainLayer.registerModule("pf2e-dragruler", PF2eRuleProvider);
+  enhancedTerrainLayer.registerModule("pf2edragruler-metric", PF2eRuleProvider);
 });

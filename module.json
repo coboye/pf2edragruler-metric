@@ -1,6 +1,6 @@
 {
-  "title": "PF2e Drag Ruler Integration",
-  "version": "2.1.8",
+  "title": "PF2e Drag Ruler Integration [metric fork]",
+  "version": "2.1.8.001",
   "description": "Integration of Drag Ruler module (https://github.com/manuelVo/foundryvtt-drag-ruler) for Pathfinder 2e with support for the 3 action enconomy, and conditions.",
   "compatibility":{
     "minimum": "10",
@@ -11,6 +11,10 @@
   {
     "name":"Avery",
     "discord": "Avery#9136"
+  },
+  {
+    "name": "Coboye",
+    "discord": "Coboye#4996"
   }
   ],
   "packs": [
@@ -35,11 +39,10 @@
   ],
   "esmodules": ["js/main.js"],
   "socket": true,
-  "manifest": "https://raw.githubusercontent.com/League-of-Foundry-Developers/pf2edragruler/main/module.json",
-
-  "download": "https://github.com/League-of-Foundry-Developers/pf2edragruler/archive/refs/tags/v2.1.8.zip",
-  "url": "https://github.com/League-of-Foundry-Developers/pf2edragruler",
-  "id": "pf2e-dragruler",
+  "manifest": "https://raw.githubusercontent.com/coboye/pf2edragruler-metric/main/module.json",
+  "download": "https://github.com/coboye/pf2edragruler-metric/archive/refs/tags/v2.1.8.001.zip",
+  "url": "https://github.com/coboye/pf2edragruler-metric",
+  "id": "pf2edragruler-metric",
   "relationships": {
     "systems": [
       {
