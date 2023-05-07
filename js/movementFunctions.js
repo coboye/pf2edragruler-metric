@@ -80,12 +80,12 @@ export function movementTracking (token){
   let baseSpeed = movementSpeed(token, movementType).speed; //gets the base speed for the token, based on current movement type.
 
 
-
+const gridResolution = 1.5;
 var metricSpeed = baseSpeed / 3.2808;
 if (isNaN(metricSpeed)) {
 	metricSpeed = 0;
 }
-baseSpeed = Math.floor(metricSpeed);
+baseSpeed = Math.round(metricSpeed / gridResolution) * gridResolution //round to nearest 1.5 factor;
 	
 
 	var usedActions = 0;
