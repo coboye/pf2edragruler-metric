@@ -1,0 +1,10 @@
+{
+    "pf2edragruler-metric": {
+        "settings": {
+            "offTurnMovement": {
+                "name": "Ignora Movimento Fuori Turno",
+                "hint": "Richiede l'abilitazione della cronologia dei movimenti. Reimposta automaticamente la cronologia dei movimenti all'inizio del turno di ogni attore in combattimento, il che significa che qualsiasi movimento eseguito fuori turno non influenzerà la cronologia dei movimenti nel tuo turno."
+            }
+        }
+    }
+}

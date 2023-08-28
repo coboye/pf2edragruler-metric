@@ -1,46 +1,48 @@
 {
   "title": "PF2e Drag Ruler Integration [metric fork]",
-  "version": "2.1.8.002",
-  "description": "Integration of Drag Ruler module (https://github.com/manuelVo/foundryvtt-drag-ruler) for Pathfinder 2e with support for the 3 action enconomy, and conditions.",
-  "compatibility":{
-    "minimum": "10",
-    "verified": "10",
-    "maximum": "10"
+  "version": "3.0.3.001",
+  "description": "Integration of Drag Ruler module (https://github.com/manuelVo/foundryvtt-drag-ruler) for Pathfinder 2e.",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "11.305",
+    "maximum": "11.999"
   },
-  "authors":[
-  {
-    "name":"Avery",
-    "discord": "Avery#9136"
-  },
-  {
-    "name": "Coboye",
-    "discord": "Coboye#4996"
-  }
-  ],
-  "packs": [
+  "authors": [
     {
-      "name": "movement-effects",
-      "label": "Movement Effects",
-      "path": "packs/movement-effects.db",
-      "type": "Item",
-      "private": false,
-      "system": "pf2e",
+      "name": "Reyzor",
+      "discord": "reyzor1991",
       "flags": {}
     },
     {
+      "name": "Avery",
+      "discord": "celtois",
+      "flags": {}
+    },
+    {
+      "name": "Coboye",
+      "discord": "Coboye#4996"
+    }
+  ],
+  "packs": [
+    {
       "name": "movement-types",
       "label": "Movement Types",
-      "path": "packs/movement-types.db",
+      "path": "packs/movement-types",
       "type": "Item",
-      "private": false,
       "system": "pf2e",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
       "flags": {}
     }
   ],
-  "esmodules": ["js/main.js"],
+  "esmodules": [
+    "js/main.js"
+  ],
   "socket": true,
   "manifest": "https://raw.githubusercontent.com/coboye/pf2edragruler-metric/main/module.json",
-  "download": "https://github.com/coboye/pf2edragruler-metric/archive/refs/tags/v2.1.8.002.zip",  
+  "download": "https://github.com/coboye/pf2edragruler-metric/archive/refs/tags/v3.0.3.001.zip",
   "url": "https://github.com/coboye/pf2edragruler-metric",
   "id": "pf2edragruler-metric",
   "relationships": {
@@ -52,11 +54,35 @@
       }
     ],
     "requires": [
-			{
-				"id": "drag-ruler",
-				"type": "module",
-				"manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-drag-ruler/v1.13.0/module.json"
-			}
-		]
-  }
+      {
+        "id": "drag-ruler",
+        "type": "module",
+        "manifest": "https://raw.githubusercontent.com/manuelVo/foundryvtt-drag-ruler/v1.13.5/module.json",
+        "compatibility": {}
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "setup",
+      "caption": "PF2E Drag Ruler",
+      "loop": false,
+      "thumbnail": "/modules/pf2edragruler-metric/thumbnail.webp",
+      "flags": {}
+    }
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json",
+      "flags": {}
+    },
+    {
+      "lang": "it",
+      "name": "Italiano",
+      "path": "lang/it.json",
+      "flags": {}
+    }
+  ]
 }
